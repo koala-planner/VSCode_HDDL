@@ -1,0 +1,69 @@
+{
+  "name": "hddl-parser",
+  "displayName": "HDDL Parser",
+  "description": "",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon.png",
+  "publisher": "KoalaHTNPlanning",
+  "main": "./out/extension.js",
+  "path": "./syntaxes/hddl.tmLanguage.json",
+  "contributes": {
+    "languages": [
+      {
+        "id": "hddl",
+        "aliases": [
+          "HDDL",
+          "hddl"
+        ],
+        "extensions": [
+          ".hddl"
+        ],
+        "configuration": "./syntaxes/language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "hddl",
+        "scopeName": "source.hddl",
+        "path": "./syntaxes/hddl.tmLanguage.json"
+      }
+    ],
+    "configuration":[
+      {
+        "title": "HDDL Analyzer",
+        "properties": {
+          "hddl-analyzer.languageServer.path": {
+            "type": ["string", "null"],
+            "default": null,
+            "description": "Specifies the absolute path to the language server binary."
+          }
+        }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}

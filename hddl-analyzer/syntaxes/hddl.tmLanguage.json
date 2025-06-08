@@ -1,0 +1,77 @@
+{
+  "name": "HDDL",
+  "scopeName": "source.hddl",
+  "fileTypes": [
+    "hddl"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#meta"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.semicolon.hddl",
+          "match": ";.*$"
+        }
+      ]
+    },
+    "meta": {
+      "patterns": [
+        {
+          "name": "meta.function",
+          "match": "(\\:types|\\:action|\\:method|\\:task|\\:domain|domain|problem)\\s+[a-zA-Z0-9-_]",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration"
+            },
+            "2": {
+              "name": "entity.name.function.hddl"
+            }
+          }
+        },
+        {
+          "name": "keyword.control.hddl",
+          "match": "(define|\\:parameters|\\:precondition|\\:effect|\\:subtasks|\\:ordering|\\:ordered-tasks|ordered-subtasks|\\:tasks|\\:task)\\b"
+        },
+        {
+          "name": "keyword.declaration",
+          "match": "(\\:predicates|\\:objects|\\:requirements|\\:htn|\\:init|\\:goal|\\:types|\\:constants)\\b"
+        },
+        {
+          "name": "keyword.control.conditional.hddl",
+          "match": "\\b(when)\\b"
+        },
+        {
+          "name": "keyword.control.logical.hddl",
+          "match": "\\b(and|oneof|not|or|forall|exists)\\b"
+        },
+        {
+          "name": "keyword.operator.comparison.hddl",
+          "match": "<=|>=|=|<|>"
+        },
+        {
+          "name": "variable.hddl",
+          "match": "\\?[a-zA-Z0-9-_]+\\s*"       
+        },
+        {
+          "name": "meta.parameter.typed.hddl",
+          "match": "(\\s+-\\s*|\\s*-\\s+)([a-zA-Z0-9-_]*)",
+          "captures": {
+            "1": {
+              "name": "punctuation.separator"
+            },
+            "2": {
+              "name": "entity.name.type.parameter.hddl"
+            }
+          }          
+        }
+      ]
+    }
+  }
+}
