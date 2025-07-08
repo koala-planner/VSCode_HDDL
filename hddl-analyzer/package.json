@@ -9,6 +9,10 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/koala-planner/VSCode_HDDL.git"
+  },
   "icon": "icon.png",
   "publisher": "KoalaHTNPlanning",
   "main": "./out/extension.js",
