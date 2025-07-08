@@ -8,25 +8,8 @@ A Visual Studio Code extension that provides language support for Hierarchical D
 - **Type checking** for parameters, predicates, and tasks
 - **Detection of common modeling issues** like undefined entities, cyclic dependencies, and contradictory formulas
 
-## Prerequisites
-This extension requires the HDDL Parser language server to be built separately.
-
-### Building the HDDL Parser Server
-1. Clone the HDDL Parser repository:
-   ```bash
-   git clone https://github.com/koala-planner/HDDL-Parser
-   ```
-2. Follow the build instructions in the repository to compile the `language_server` binary
-3. Note the path to the compiled `language_server.exe` (or `language_server` on Unix systems)
-
-## Configuration
-After installing the extension, you must configure the path to the HDDL Parser language server:
-1. Open VSCode Settings (File → Preferences → Settings)
-2. Search for "HDDL Analyzer"
-3. Set the **languageServer.path** to the full path of your compiled `language_server` binary
-
 ## Usage
-Once configured, the extension automatically activates when you open `.hddl` files. Validation errors and warnings will appear in the editor.
+The extension is automatically activated when you open `.hddl` files. Validation errors and warnings will appear in the editor.
 
 ## Supported Error Detection
 - Basic syntax issues
@@ -39,8 +22,7 @@ Once configured, the extension automatically activates when you open `.hddl` fil
 - Contradictory formulas
 - Unrefinable tasks
 
-## Troubleshooting
-If the extension is not working:
-1. Verify the HDDL Parser server path is correct in settings
-2. Ensure the `language_server` binary has execute permissions
-3. Check the Output panel (View → Output → HDDL) for error messages
+## Codebase
+Both the language server and the client are open-source, and publicly available through the following links:
+- **Server**: [https://github.com/koala-planner/HDDL-Parser](https://github.com/koala-planner/HDDL-Parser)
+- **VSCode Client**: [https://github.com/koala-planner/VSCode_HDDL](https://github.com/koala-planner/VSCode_HDDL)
