@@ -79,7 +79,11 @@
   "files": [
     "out/**/*",
     "bin/**/*",
+    "syntaxes/**/*",
+    "node_modules/**/*",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "LICENSE",
+    "icon.png"
   ]
 }

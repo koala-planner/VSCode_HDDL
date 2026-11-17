@@ -26,9 +26,8 @@ export class BinaryManager {
 
     if (!fs.existsSync(binaryPath)) {
       throw new Error(`Binary not found for platform ${platform}-${arch}`);
-    } else {
-        this.ensureIsExecutable();
     }
+    this.ensureIsExecutable(binaryPath);
     return binaryPath;
   }
 
@@ -54,11 +53,15 @@ export class BinaryManager {
     }
   }
 
-  async ensureIsExecutable(): Promise<void> {
-    if (os.platform() !== 'win32') {
-      const binaryPath = this.getBinaryPath();
-      const { chmod } = await import('fs/promises');
-      await chmod(binaryPath, '755');
+  // Synchronous on purpose: the binary must be executable before the caller spawns it.
+  private ensureIsExecutable(binaryPath: string): void {
+    if (os.platform() === 'win32') {
+      return;
+    }
+    try {
+      fs.accessSync(binaryPath, fs.constants.X_OK);
+    } catch {
+      fs.chmodSync(binaryPath, 0o755);
     }
   }
 }
